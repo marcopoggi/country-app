@@ -1,24 +1,33 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const { expect } = require('chai');
-const session = require('supertest-session');
-const app = require('../../src/app.js');
-const { Country, conn } = require('../../src/db.js');
+const { expect } = require("chai");
+const session = require("supertest-session");
+const app = require("../../src/app.js");
+const { sequelize } = require("../../src/db");
+const { Country } = require("../../src/models/Country");
 
 const agent = session(app);
 const country = {
-  name: 'Argentina',
+  name: "Argentina",
 };
 
-describe('Country routes', () => {
-  before(() => conn.authenticate()
-  .catch((err) => {
-    console.error('Unable to connect to the database:', err);
-  }));
-  beforeEach(() => Country.sync({ force: true })
-    .then(() => Country.create(pokemon)));
-  describe('GET /countries', () => {
-    it('should get 200', () =>
-      agent.get('/countries').expect(200)
-    );
+describe("Country routes", () => {
+  before(() =>
+    sequelize.authenticate().catch((err) => {
+      console.error("Unable to connect to the database:", err);
+    })
+  );
+  beforeEach(() =>
+    Country.sync({ force: true }).then(() =>
+      Country.create({
+        id: "ARG",
+        name: "Argentina",
+        flag_image: "argentina.png",
+        continent: "America",
+        capital: "Buenos Aires",
+      })
+    )
+  );
+  describe("GET /countries", () => {
+    it("should get 200", () => agent.get("/countries").expect(200));
   });
 });
