@@ -11,34 +11,55 @@ const Activity = sequelize.define(
     },
     name: {
       type: DataTypes.STRING(30),
-      allowNull: false,
+      unique: true,
       validate: {
         notEmpty: {
-          msg: "Enter a name for the activity",
+          msg: "Invalid activity name.",
         },
       },
     },
     difficulty: {
       //1 a 5
       type: DataTypes.INTEGER,
-      allowNull: false,
+      defaultValue: 1,
       validate: {
-        min: 1,
-        max: 5,
+        isInt: {
+          msg: "Difficulty must be an integer.",
+        },
+        min: {
+          args: [1],
+          msg: "The minimum difficulty should not be less than 1.",
+        },
+        max: {
+          args: [5],
+          msg: "The maximum difficulty must not be greater than 5.",
+        },
       },
     },
     duration: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      defaultValue: 0,
       validate: {
-        min: 0,
+        isInt: {
+          msg: "Duration must be an integer.",
+        },
+        min: {
+          args: [0],
+          msg: "The duration must be greater than 0.",
+        },
       },
     },
     season: {
-      type: DataTypes.STRING(10),
-      allowNull: false,
+      type: DataTypes.ENUM("Winter", "Autumn", "Spring", "Summer", "Any"),
+      defaultValue: "Any",
       validate: {
-        isIn: [["Invierno", "Otoño", "Primavera", "Verano"]],
+        isAlpha: {
+          msg: "Stations must be text.",
+        },
+        isIn: {
+          args: [["Winter", "Autumn", "Spring", "Summer", "Any"]],
+          msg: "Invalid Season.",
+        },
       },
     },
   },
