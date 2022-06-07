@@ -19,8 +19,9 @@ sequelize.sync({ force: true }).then(() => {
   try {
     sequelize.authenticate().then(() => {
       console.log("Connected Database.");
+      //express
       server.listen(3001, () => {
-        console.log("%s listening at 3001"); // eslint-disable-line no-console
+        console.log("Server: Listening at 3001"); // eslint-disable-line no-console
       });
     });
   } catch (error) {
