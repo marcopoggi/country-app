@@ -14,7 +14,9 @@ const Country = sequelize.define(
       type: DataTypes.STRING(40),
       allowNull: false,
       validate: {
-        notEmpty: true,
+        notEmpty: {
+          msg: "A country must contain a name.",
+        },
       },
     },
     flag_image: {
@@ -42,9 +44,11 @@ const Country = sequelize.define(
     },
     subregion: {
       type: DataTypes.STRING(30),
+      defaultValue: "No Subregion.",
     },
     area: {
       type: DataTypes.REAL,
+      defaultValue: 0,
       validate: {
         isNumeric: {
           msg: "The surface only accepts numbers.",
@@ -57,6 +61,7 @@ const Country = sequelize.define(
     },
     population: {
       type: DataTypes.INTEGER,
+      defaultValue: 0,
       validate: {
         isInt: {
           msg: "The population only accepts integers.",
