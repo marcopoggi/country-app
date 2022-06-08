@@ -1,7 +1,8 @@
 const { Country } = require("./models/Country");
+const { Activity } = require("./models/Activity");
 const { Op } = require("sequelize");
 
-//returns all countries || by partial name(optional)
+//returns all countries || by partial name(optional) || [countrieA, countrieB, ...]
 async function getCountriesTable(name) {
   if (name) name = name.toLowerCase();
 
@@ -25,12 +26,54 @@ async function getCountriesTable(name) {
   return countries;
 }
 
-//*Falta devolver las ACTIVIDADES ASOCIADAS */
+async function getMultipleCountries(countries = []) {
+  try {
+    countries = countries.map((country) => ({ name: country })); //[{name: "argentina"},{name:"brasil"}]
+
+    const foundCountries = await Country.findAll({
+      where: {
+        [Op.or]: countries,
+      },
+    });
+
+    return foundCountries;
+  } catch (e) {
+    throw new Error(
+      "Something went wrong when requesting the countries in the database"
+    );
+  }
+}
+
 async function getCountryById(id) {
   if (id) id = id.toLowerCase();
 
-  const country = await Country.findByPk(id);
-  return country;
+  const countryDetail = await Country.findOne({
+    where: { id },
+    include: Activity,
+  });
+  return countryDetail;
 }
 
-module.exports = { getCountriesTable, getCountryById };
+async function setActivity(activity) {
+  try {
+    const [act, created] = await Activity.findOrCreate({ where: activity });
+    return {
+      act,
+      created,
+      message: created
+        ? "The activity was added successfully."
+        : "The activity already exists.",
+    };
+  } catch (e) {
+    throw new Error(
+      "Something went wrong while trying to create the activity."
+    );
+  }
+}
+
+module.exports = {
+  getCountriesTable,
+  getCountryById,
+  setActivity,
+  getMultipleCountries,
+};
