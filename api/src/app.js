@@ -1,7 +1,9 @@
 const express = require("express");
 const morgan = require("morgan");
 const routes = require("./routes/index");
-require("./db.js");
+//database & relations
+require("./database/db.js");
+require("./database/relations.js");
 
 const server = express();
 const ALLOWED_HOST = "http://localhost:3000";
