@@ -1,30 +1,18 @@
 const server = require("./src/app.js");
-const { sequelize } = require("./src/db.js"); //instance of Sequelize
-//models
-const { Activity } = require("./src/models/Activity");
-const { Country } = require("./src/models/Country");
-
-//relations-ships N:M
-Country.belongsToMany(Activity, {
-  through: "CountryActivities",
-  timestamps: false,
-});
-Activity.belongsToMany(Country, {
-  through: "CountryActivities",
-  timestamps: false,
-});
+const { sequelize } = require("./src/database/db.js"); //instance of Sequelize
+const { initCountries } = require("./src/config/initCountries.js");
 
 // Syncing all the models at once.
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(async () => {
   try {
-    sequelize.authenticate().then(() => {
-      console.log("Connected Database.");
-      //express
-      server.listen(3001, () => {
-        console.log("Server: Listening at 3001"); // eslint-disable-line no-console
-      });
+    await sequelize.authenticate();
+    console.log("Connected Database.");
+    //load countries if the country table is empty.
+    await initCountries();
+    server.listen(3001, () => {
+      console.log("Server: Listening at 3001"); // eslint-disable-line no-console
     });
-  } catch (error) {
-    console.error("Unable to connect to the database:", error);
+  } catch (e) {
+    throw new Error(e.message);
   }
 });
