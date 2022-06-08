@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 //model
-const { Activity } = require("../models/Activity");
+const { Activity } = require("../database/models/Activity");
 
 router.post("/activities", (req, res) => {
   const { name, difficulty, duration, season, countries } = req.body;
