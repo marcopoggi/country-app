@@ -2,7 +2,7 @@ const { sequelize } = require("../db");
 const { DataTypes } = require("sequelize");
 
 const Activity = sequelize.define(
-  "Activity",
+  "activity",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -23,6 +23,9 @@ const Activity = sequelize.define(
         isLowercase: {
           msg: "Be sure to save string data in lowercase(activity name).",
         },
+      },
+      set(value) {
+        this.setDataValue("name", value.toLowerCase());
       },
     },
     difficulty: {
@@ -57,19 +60,22 @@ const Activity = sequelize.define(
       },
     },
     season: {
-      type: DataTypes.ENUM("Winter", "Autumn", "Spring", "Summer", "Any"),
-      defaultValue: "Any",
+      type: DataTypes.ENUM("winter", "autumn", "spring", "summer", "any"),
+      defaultValue: "any",
       validate: {
         isAlpha: {
           msg: "Stations must be text.",
         },
         isIn: {
-          args: [["Winter", "Autumn", "Spring", "Summer", "Any"]],
+          args: [["winter", "autumn", "spring", "summer", "any"]],
           msg: "Invalid Season.",
         },
         isLowercase: {
           msg: "Be sure to save string data in lowercase(activity season)",
         },
+      },
+      set(value) {
+        this.setDataValue("season", value.toLowerCase());
       },
     },
   },
