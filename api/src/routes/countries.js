@@ -20,6 +20,7 @@ router.get("/countries", (req, res) => {
   }
 });
 
+//detail (country + activities)
 router.get("/countries/:countryId", (req, res) => {
   try {
     const { countryId } = req.params;
