@@ -6,6 +6,7 @@ const Activity = sequelize.define(
   {
     id: {
       type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
     },
     name: {
@@ -15,10 +16,17 @@ const Activity = sequelize.define(
         notEmpty: {
           msg: "Invalid activity name.",
         },
+        isString(value) {
+          if (typeof value !== "string")
+            throw new Error("The activity name must be a string.");
+        },
+        isLowercase: {
+          msg: "Be sure to save string data in lowercase(activity name).",
+        },
       },
     },
     difficulty: {
-      //1 a 5
+      //1 - 5
       type: DataTypes.INTEGER,
       defaultValue: 1,
       validate: {
@@ -58,6 +66,9 @@ const Activity = sequelize.define(
         isIn: {
           args: [["Winter", "Autumn", "Spring", "Summer", "Any"]],
           msg: "Invalid Season.",
+        },
+        isLowercase: {
+          msg: "Be sure to save string data in lowercase(activity season)",
         },
       },
     },
