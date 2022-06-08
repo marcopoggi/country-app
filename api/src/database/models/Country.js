@@ -16,6 +16,13 @@ const Country = sequelize.define(
         notEmpty: {
           msg: "A country must contain a name.",
         },
+        isString(value) {
+          if (typeof value !== "string")
+            throw new Error("The Country name must be a string.");
+        },
+        isLowercase: {
+          msg: "Be sure to save string data in lowercase(Country name)",
+        },
       },
     },
     flag_image: {
@@ -25,6 +32,10 @@ const Country = sequelize.define(
         isUrl: {
           msg: "The image must be a url.",
         },
+        isString(value) {
+          if (typeof value !== "string")
+            throw new Error("The url must be a string.");
+        },
       },
     },
     continent: {
@@ -33,6 +44,13 @@ const Country = sequelize.define(
       validate: {
         notNull: { msg: "A null Continent is not allowed." },
       },
+      isString(value) {
+        if (typeof value !== "string")
+          throw new Error("The continent must be a string.");
+      },
+      isLowercase: {
+        msg: "Be sure to save string data in lowercase(Country continent)",
+      },
     },
     capital: {
       type: DataTypes.STRING(60),
@@ -40,10 +58,26 @@ const Country = sequelize.define(
       validate: {
         notNull: { msg: "A null Capital is not allowed." },
       },
+      isString(value) {
+        if (typeof value !== "string")
+          throw new Error("The capital must be a string.");
+      },
+      isLowercase: {
+        msg: "Be sure to save string data in lowercase(Country capital)",
+      },
     },
     subregion: {
       type: DataTypes.STRING(30),
       defaultValue: "No Subregion.",
+      validate: {
+        isString(value) {
+          if (typeof value !== "string")
+            throw new Error("The subregion must be a string.");
+        },
+        isLowercase: {
+          msg: "Be sure to save string data in lowercase(Country subregion)",
+        },
+      },
     },
     area: {
       type: DataTypes.DECIMAL,
