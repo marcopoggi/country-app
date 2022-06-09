@@ -18,12 +18,14 @@ describe("Country routes", () => {
   );
   beforeEach(() =>
     Country.sync({ force: true }).then(() =>
-      Country.create({
-        id: "ARG",
-        name: "Argentina",
-        flag_image: "argentina.png",
-        continent: "America",
-        capital: "Buenos Aires",
+      Country.findOrCreate({
+        where: {
+          id: "arg",
+          name: "argentina",
+          flag_image: "http://www.images.com/argentina.png",
+          continent: "america",
+          capital: "buenos aires",
+        },
       })
     )
   );
