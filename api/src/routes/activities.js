@@ -24,14 +24,10 @@ router.post("/activities", async (req, res) => {
     });
 
     response.created
-      ? res.status(201).json({ ...response, code: 201 })
-      : res.status(200).json({ ...response, code: 200 });
+      ? res.status(201).json(response)
+      : res.status(200).json(response);
   } catch (e) {
-    res.status(400).json({
-      error: e.message,
-      status: 400,
-      statusText: "Invalid fields or server error.",
-    });
+    res.status(500).json({ error: e.message });
   }
 });
 
