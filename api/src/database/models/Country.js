@@ -79,7 +79,7 @@ const Country = sequelize.define(
     },
     subregion: {
       type: DataTypes.STRING(30),
-      defaultValue: "No Subregion.",
+      defaultValue: "no subregion",
       validate: {
         isString(value) {
           if (typeof value !== "string")
