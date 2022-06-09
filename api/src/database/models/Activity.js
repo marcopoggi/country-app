@@ -20,9 +20,6 @@ const Activity = sequelize.define(
           if (typeof value !== "string")
             throw new Error("The activity name must be a string.");
         },
-        isLowercase: {
-          msg: "Be sure to save string data in lowercase(activity name).",
-        },
       },
       set(value) {
         this.setDataValue("name", value.toLowerCase());
@@ -69,9 +66,6 @@ const Activity = sequelize.define(
         isIn: {
           args: [["winter", "autumn", "spring", "summer", "any"]],
           msg: "Invalid Season.",
-        },
-        isLowercase: {
-          msg: "Be sure to save string data in lowercase(activity season)",
         },
       },
       set(value) {

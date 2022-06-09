@@ -19,9 +19,6 @@ const Country = sequelize.define(
             if (typeof value !== "string")
               throw new Error("The Country name must be a string.");
           },
-          isLowercase: {
-            msg: "Be sure to save string data in lowercase(Country name)",
-          },
         },
         set(value) {
           this.setDataValue("name", value.toLowerCase());
@@ -50,9 +47,6 @@ const Country = sequelize.define(
           if (typeof value !== "string")
             throw new Error("The continent must be a string.");
         },
-        isLowercase: {
-          msg: "Be sure to save string data in lowercase(Country continent)",
-        },
       },
 
       set(value) {
@@ -68,9 +62,6 @@ const Country = sequelize.define(
           if (typeof value !== "string")
             throw new Error("The capital must be a string.");
         },
-        isLowercase: {
-          msg: "Be sure to save string data in lowercase(Country capital)",
-        },
       },
 
       set(value) {
@@ -84,9 +75,6 @@ const Country = sequelize.define(
         isString(value) {
           if (typeof value !== "string")
             throw new Error("The subregion must be a string.");
-        },
-        isLowercase: {
-          msg: "Be sure to save string data in lowercase(Country subregion)",
         },
       },
       set(value) {
