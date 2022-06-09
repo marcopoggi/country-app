@@ -68,7 +68,14 @@ async function getCountryById(id) {
 
 async function setActivity(activity) {
   try {
-    const [act, created] = await Activity.findOrCreate({ where: activity });
+    const [act, created] = await Activity.findOrCreate({
+      where: {
+        name: activity.name,
+      },
+      defaults: {
+        ...activity,
+      },
+    });
     return {
       act,
       created,
