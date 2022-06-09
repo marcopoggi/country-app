@@ -1,5 +1,5 @@
-const { sequelize } = require("../../src/db");
-const { Country } = require("../../src/models/Country");
+const { sequelize } = require("../../src/database/db");
+const { Country } = require("../../src/database/models/Country");
 const { expect } = require("chai");
 
 describe("Country model", () => {

@@ -2,8 +2,8 @@
 const { expect } = require("chai");
 const session = require("supertest-session");
 const app = require("../../src/app.js");
-const { sequelize } = require("../../src/db");
-const { Country } = require("../../src/models/Country");
+const { sequelize } = require("../../src/database/db");
+const { Country } = require("../../src/database/models/Country");
 
 const agent = session(app);
 const country = {
