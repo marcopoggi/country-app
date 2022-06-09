@@ -4,26 +4,32 @@ const { Op } = require("sequelize");
 
 //returns all countries || by partial name(optional) || [countrieA, countrieB, ...]
 async function getCountriesTable(name) {
-  if (name) name = name.toLowerCase();
+  try {
+    if (name) name = name.toLowerCase();
 
-  const allCountries = name
-    ? await Country.findAll({
-        where: {
-          name: {
-            [Op.like]: `%${name}%`,
+    const allCountries = name
+      ? await Country.findAll({
+          where: {
+            name: {
+              [Op.like]: `%${name}%`,
+            },
           },
-        },
-      })
-    : await Country.findAll();
+        })
+      : await Country.findAll();
 
-  const countries = allCountries.map(({ name, flag_image, continent }) => {
-    return {
-      name,
-      flag_image,
-      continent,
-    };
-  });
-  return countries;
+    const countries = allCountries.map(({ name, flag_image, continent }) => {
+      return {
+        name,
+        flag_image,
+        continent,
+      };
+    });
+    return countries;
+  } catch (e) {
+    throw new Error(
+      "Something went wrong when getting the countries from the database."
+    );
+  }
 }
 
 async function getMultipleCountries(countries = []) {
@@ -45,13 +51,19 @@ async function getMultipleCountries(countries = []) {
 }
 
 async function getCountryById(id) {
-  if (id) id = id.toLowerCase();
+  try {
+    if (id) id = id.toLowerCase();
 
-  const countryDetail = await Country.findOne({
-    where: { id },
-    include: Activity,
-  });
-  return countryDetail;
+    const countryDetail = await Country.findOne({
+      where: { id },
+      include: Activity,
+    });
+    return countryDetail;
+  } catch (e) {
+    throw new Error(
+      "Something went wrong trying to get the country by id from the database."
+    );
+  }
 }
 
 async function setActivity(activity) {
