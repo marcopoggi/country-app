@@ -8,7 +8,7 @@ router.use([countries, activities]);
 
 //default not found
 router.get("*", (req, res) => {
-  res.status(404).send("Page Not Found");
+  res.status(404).json({ error: "Resource not found or non-existent." });
 });
 
 module.exports = router;
