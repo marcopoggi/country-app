@@ -11,7 +11,11 @@ async function initCountriesTable() {
     const countriesToCreate = await getAllCountries();
     await Promise.all(
       countriesToCreate.map(
-        (country) => Country.findOrCreate({ where: { ...country } }) //for safe.
+        (country) =>
+          Country.findOrCreate({
+            where: { id: country.id },
+            defaults: { ...country },
+          }) //for safe.
       )
     );
     console.log("TABLE 'countries': All countries has been loaded / Prepared.");
