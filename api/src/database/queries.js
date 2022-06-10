@@ -14,16 +14,21 @@ async function getCountriesTable(name) {
               [Op.like]: `%${name}%`,
             },
           },
+          include: Activity,
         })
-      : await Country.findAll();
+      : await Country.findAll({ include: Activity });
 
-    const countries = allCountries.map(({ name, flag_image, continent }) => {
-      return {
-        name,
-        flag_image,
-        continent,
-      };
-    });
+    const countries = allCountries.map(
+      ({ name, flag_image, continent, population, activities }) => {
+        return {
+          name,
+          flag_image,
+          continent,
+          population,
+          activities,
+        };
+      }
+    );
     return countries;
   } catch (e) {
     throw new Error(
