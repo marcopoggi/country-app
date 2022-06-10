@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Welcome } from "./components/welcome/welcome.jsx";
+import { Welcome } from "./pages/Landing/Landing.jsx";
 
 function App() {
   return (
