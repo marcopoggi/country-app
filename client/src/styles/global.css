@@ -4,20 +4,25 @@
 :root {
   --pri-color-solid: rgba(23, 128, 111);
   --sec-color-solid: rgba(23, 128, 63);
-  --pri-color-transparent: rgba(23, 128, 111, 0.923);
-  --sec-color-transparent: rgba(23, 128, 63, 0.792);
+  --pri-color-transparent: rgba(23, 128, 111, 0.85);
+  --sec-color-transparent: rgba(23, 128, 63, 0.75);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 14px;
   font-family: 'Roboto', sans-serif;
+}
+
+*::selection {
+  color: #000;
+  background-color: #CCC;
 }
 
 body {
   background-color: #000;
+  font-size: 14px;
 }
 
 .App {
