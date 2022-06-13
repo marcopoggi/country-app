@@ -20,7 +20,7 @@ export function Searcher() {
   );
 
   return (
-    <form>
+    <form onSubmit={(e) => e.preventDefault()}>
       <input
         type="text"
         onChange={handleInput}
