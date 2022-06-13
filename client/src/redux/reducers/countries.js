@@ -1,21 +1,28 @@
-const LIMIT = 10;
-
 const initialState = {
   countries: [],
-  error: false,
-  message: "",
+  countriesToView: [],
+  error: { state: false, msg: "" },
+  filters: {},
+  order: { sortBy: "", ascendant: false },
 };
 
 export function countriesReducer(state = initialState, action) {
   switch (action.type) {
     case "@countries/setCountries":
-      const { response, error, message } = action.payload;
-      if (!response) return { ...state, error, message };
+      const response = action.payload;
+      if (response?.error)
+        return { ...state, error: { state: true, msg: response.error } };
       return {
         ...state,
         countries: [...response],
-        totalPages: Math.ceil(response.length / LIMIT),
+        error: { state: false, msg: "" },
       };
+    case "@countries/setView":
+      return { ...state, countriesToView: action.payload };
+    case "@countries/setFilter":
+      return { ...state, filters: { ...state.filters, ...action.payload } };
+    case "@countries/setOrder":
+      return { ...state, order: { ...state.order, ...action.payload } };
     default:
       return { ...state };
   }
