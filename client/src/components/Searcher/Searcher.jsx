@@ -1,17 +1,23 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setCountriesByFilters } from "../../redux/actions/countries";
 
 export function Searcher() {
+  const disptach = useDispatch();
   const [countryToSearch, setCountryToSearch] = useState("");
   const searchInput = useRef(null);
 
   const handleInput = (e) => {
     let value = e.target.value;
-    setCountryToSearch(value);
+    setCountryToSearch(value.toLowerCase());
   };
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-  };
+  useEffect(
+    function () {
+      disptach(setCountriesByFilters({ name: countryToSearch }));
+    },
+    [countryToSearch, disptach]
+  );
 
   return (
     <form>
@@ -21,12 +27,6 @@ export function Searcher() {
         placeholder="Example: Argentina"
         ref={searchInput}
       />
-      <button type="button">
-        <img src={null} alt="preferences" />
-      </button>
-      <button type="submit" onClick={handleSearch}>
-        <img src={null} alt="search" />
-      </button>
     </form>
   );
 }
