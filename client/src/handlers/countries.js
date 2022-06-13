@@ -1,56 +1,65 @@
-const filteringCountries = (country = {}, filters = {}) => {
-  let willBeFiltered = false;
-  try {
-    if (Object.keys(filters).length === 0) return true;
-    for (let key in filters) {
-      let matches = 0;
-      filters[key].forEach((val) => {
-        if (Array.isArray(country[key])) {
-          matches += country[key].includes(val) ? 1 : 0;
-        } else matches += country[key] === val ? 1 : 0;
-      });
-      if (matches === 0) {
-        willBeFiltered = false;
-        break;
-      }
-      willBeFiltered = true;
-    }
-    return willBeFiltered;
-  } catch (e) {
-    return willBeFiltered;
+const AVAILABLE_FILTERS = ["continent", "name", "activities"];
+
+const validFilters = (filters) => {
+  for (let key in filters) {
+    if (!AVAILABLE_FILTERS.includes(key)) return false;
   }
+  return true;
+};
+
+const filteringCountries = (country = {}, filters = {}) => {
+  let FILTERED = false;
+  let matches = 0;
+
+  for (let key in filters) {
+    switch (key) {
+      case "name":
+        let name = filters[key];
+        if (name === "" || country[key].startsWith(name)) matches++;
+        break;
+      case "continent":
+        let { continent } = filters;
+        if (continent.includes(country[key])) matches++;
+        break;
+      case "activities":
+        let { activities } = filters;
+        for (let act of activities) {
+          if (country[key].includes(act)) {
+            matches++;
+            break;
+          }
+        }
+        break;
+      default:
+        break;
+    }
+  }
+  if (matches === Object.keys(filters).length) FILTERED = true;
+  return FILTERED;
 };
 
 const orderingCountries = (value) => {
   return function (countryA, countryB) {
-    try {
-      if (countryA[value] < countryB[value]) return -1;
-      if (countryA[value] > countryB[value]) return 1;
-      return 0;
-    } catch (e) {
-      return 0;
-    }
+    if (countryA[value] < countryB[value]) return -1;
+    if (countryA[value] > countryB[value]) return 1;
+    return 0;
   };
 };
 
 export function getFilteredCountries(countries = [], filters = {}) {
-  if (Object.keys(filters).length === 0) return countries;
-  const filteredCountries = countries.filter((country) =>
-    filteringCountries(country, filters)
-  );
-  return { countries: filteredCountries };
+  if (Object.keys(filters).length === 0 || !validFilters(filters))
+    return countries;
+  return countries.filter((country) => filteringCountries(country, filters));
 }
 
 export function getOrderedCountries(
   countries = [],
-  options = { sortValue: "", ascendant: false }
+  options = { sortBy: "", ascendant: false }
 ) {
-  const { sortValue, ascendant } = options;
+  const { sortBy, ascendant } = options;
 
-  if (sortValue === "" && ascendant === false) return countries;
-  const sortFunction = () => orderingCountries(sortValue);
+  if (sortBy === "" && ascendant === false) return countries;
+  const sortFunction = () => orderingCountries(sortBy);
   const orderedCountries = countries.sort(sortFunction);
-  return {
-    countries: ascendant ? orderedCountries.reverse() : orderedCountries,
-  };
+  return ascendant ? orderedCountries.reverse() : orderedCountries;
 }
