@@ -7,7 +7,6 @@ import {
 import thunk from "redux-thunk";
 //reducers
 import { countriesReducer } from "./reducers/countries";
-import { detailsReducer } from "./reducers/details";
 
 //redux dev tools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -16,7 +15,6 @@ const middlewares = [thunk];
 //reducers
 const rootReducer = combineReducers({
   countries: countriesReducer,
-  details: detailsReducer,
 });
 
 export const store = createStore(
