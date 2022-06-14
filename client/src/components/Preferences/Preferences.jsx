@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   setCountriesByFilters,
@@ -43,6 +43,15 @@ export function Preferences() {
       setNewPreferences(false);
     }
   };
+
+  //reset filters
+  useEffect(function () {
+    setFilters({ continent: [], activities: [] });
+    setOrder({ sortBy: "", descendent: false });
+    dispatch(setCountriesByFilters(filters));
+    dispatch(setCountriesByOrder(order));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
