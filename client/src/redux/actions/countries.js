@@ -24,9 +24,9 @@ export function setCountriesByFilters(filters) {
   };
 }
 
-export function setCountriesByOrder(orderBy = "", ascendant = false) {
+export function setCountriesByOrder(order) {
   return {
     type: "@countries/setOrder",
-    payload: { orderBy, ascendant },
+    payload: order,
   };
 }
