@@ -20,24 +20,13 @@ export function useCountries() {
       setLoading(true);
       if (countries.length === 0) {
         dispatch(setCountries());
-        dispatch(setCountriesToView(countries));
       }
-      dispatch(setCountriesToView(countries));
-      setLoading(false);
-    },
-    [countries.length, dispatch, countries]
-  );
-
-  useEffect(
-    function () {
-      setLoading(true);
       const filtered = getFilteredCountries(countries, filters);
       const ordered = getOrderedCountries(filtered, order);
       dispatch(setCountriesToView(ordered));
       setLoading(false);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [filters, order]
+    [countries.length, dispatch, countries, filters, order]
   );
 
   return { countries: countriesToView, error, loading };
