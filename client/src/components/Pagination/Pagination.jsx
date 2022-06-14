@@ -1,11 +1,18 @@
+import { useEffect, useState } from "react";
+
 export function Pagination({ actual, total, setPage }) {
-  const createPages = (totalPages) => {
-    const pages = [];
-    for (let i = 1; i <= totalPages; i++) {
-      pages.push(i);
-    }
-    return pages;
-  };
+  const [pages, setPages] = useState([]);
+
+  useEffect(
+    function () {
+      let newPages = [];
+      for (let i = 1; i <= total; i++) {
+        newPages.push(i);
+      }
+      setPages(newPages);
+    },
+    [total]
+  );
 
   const handleChangePage = (e) => {
     const value = e.target.value;
@@ -25,7 +32,7 @@ export function Pagination({ actual, total, setPage }) {
       <button key={"Previous"} value="prev" onClick={handleChangePage}>
         Previous
       </button>
-      {createPages(total).map((page) => (
+      {pages.map((page) => (
         <button
           key={page}
           value={page}
