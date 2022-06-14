@@ -25,12 +25,12 @@ export function Pagination({ actual, total, setPage }) {
       <button key={"Previous"} value="prev" onClick={handleChangePage}>
         Previous
       </button>
-      {createPages(total).map((page, index) => (
+      {createPages(total).map((page) => (
         <button
           key={page}
           value={page}
           onClick={handleChangePage}
-          disabled={index === actual - 1 ? true : false}
+          disabled={page === actual}
         >
           {page}
         </button>
