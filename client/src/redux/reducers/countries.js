@@ -3,7 +3,7 @@ const initialState = {
   countriesToView: [],
   error: { state: false, msg: "" },
   filters: {},
-  order: { sortBy: "", ascendant: false },
+  order: { sortBy: "name", descendent: false },
 };
 
 export function countriesReducer(state = initialState, action) {
