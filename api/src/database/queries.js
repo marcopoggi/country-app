@@ -55,12 +55,14 @@ async function getMultipleCountries(countries = []) {
   }
 }
 
-async function getCountryById(id) {
+async function getCountryByIdOrName(idOrName) {
   try {
-    if (id) id = id.toLowerCase();
+    if (idOrName) idOrName = idOrName.toLowerCase();
 
     const countryDetail = await Country.findOne({
-      where: { id },
+      where: {
+        [Op.or]: [{ id: idOrName }, { name: idOrName }],
+      },
       include: Activity,
     });
     return countryDetail;
@@ -97,7 +99,7 @@ async function setActivity(activity) {
 
 module.exports = {
   getCountriesTable,
-  getCountryById,
+  getCountryByIdOrName,
   setActivity,
   getMultipleCountries,
 };

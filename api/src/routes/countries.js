@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
 //queries
-const { getCountriesTable, getCountryById } = require("../database/queries");
+const {
+  getCountriesTable,
+  getCountryByIdOrName,
+} = require("../database/queries");
 
 router.get("/countries", (req, res) => {
   try {
@@ -21,14 +24,14 @@ router.get("/countries", (req, res) => {
 });
 
 //detail
-router.get("/countries/:countryId", (req, res) => {
+router.get("/countries/:countryIdOrName", (req, res) => {
   try {
-    const { countryId } = req.params;
-    getCountryById(countryId)
+    const { countryIdOrName } = req.params;
+    getCountryByIdOrName(countryIdOrName)
       .then((country) => {
         if (!country)
           return res.status(404).json({
-            error: `[${countryId}] is not a valid country identifier.`,
+            error: `[${countryIdOrName}] is not a valid country identifier/name.`,
           });
         return res.status(200).json(country);
       })
