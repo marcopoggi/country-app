@@ -20,9 +20,14 @@ const filteringCountries = (country = {}, filters = {}) => {
       case "continent":
         let { continent } = filters;
         if (continent.includes(country[key])) matches++;
+        else if (continent.length === 0) matches++;
         break;
       case "activities":
         let { activities } = filters;
+        if (activities.length === 0) {
+          matches++;
+          break;
+        }
         for (let act of activities) {
           if (country[key].includes(act)) {
             matches++;
@@ -38,13 +43,13 @@ const filteringCountries = (country = {}, filters = {}) => {
   return FILTERED;
 };
 
-const orderingCountries = (value) => {
-  return function (countryA, countryB) {
-    if (countryA[value] < countryB[value]) return -1;
-    if (countryA[value] > countryB[value]) return 1;
+function orderingCountries(sortBy = "name") {
+  return function (a, b) {
+    if (a[sortBy] > b[sortBy]) return 1;
+    if (a[sortBy] < b[sortBy]) return -1;
     return 0;
   };
-};
+}
 
 export function getFilteredCountries(countries = [], filters = {}) {
   if (Object.keys(filters).length === 0 || !validFilters(filters))
@@ -54,12 +59,10 @@ export function getFilteredCountries(countries = [], filters = {}) {
 
 export function getOrderedCountries(
   countries = [],
-  options = { sortBy: "", ascendant: false }
+  options = { sortBy: "name", descendent: false }
 ) {
-  const { sortBy, ascendant } = options;
-
-  if (sortBy === "" && ascendant === false) return countries;
-  const sortFunction = () => orderingCountries(sortBy);
-  const orderedCountries = countries.sort(sortFunction);
-  return ascendant ? orderedCountries.reverse() : orderedCountries;
+  let { sortBy, descendent } = options;
+  if (sortBy === "") sortBy = "name";
+  const orderedCountries = [...countries].sort(orderingCountries(sortBy));
+  return descendent ? orderedCountries.reverse() : orderedCountries;
 }
