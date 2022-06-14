@@ -11,23 +11,6 @@ export function CountryList() {
   const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const handleChangePage = (e) => {
-    const value = e.target.value;
-    switch (value) {
-      case "prev":
-        return currentPage > 1 && setCurrentPage(currentPage - 1);
-      case "next":
-        return currentPage < totalPages && setCurrentPage(currentPage + 1);
-      default:
-        const pageNumber = Number(value);
-        return (
-          pageNumber >= 1 &&
-          pageNumber <= totalPages &&
-          setCurrentPage(pageNumber)
-        );
-    }
-  };
-
   useEffect(
     function () {
       setCountriesToView(countries);
@@ -53,7 +36,11 @@ export function CountryList() {
             <CountryCard {...country} key={country.name} />
           ))}
       </div>
-      <Pagination total={totalPages} handler={handleChangePage} />
+      <Pagination
+        total={totalPages}
+        actual={currentPage}
+        setPage={setCurrentPage}
+      />
     </div>
   );
 }
