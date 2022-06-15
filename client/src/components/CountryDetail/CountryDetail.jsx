@@ -1,5 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import { CountryActivities } from "../CountryActivities/CountryActivities";
 export function CountryDetail({ info }) {
+  const navigate = useNavigate();
+
   return (
     <>
       <h1>{info.name}</h1>
@@ -14,7 +17,7 @@ export function CountryDetail({ info }) {
       <hr />
       <h2>Activities</h2>
       <CountryActivities activities={info.activities} />
-      <button>Create Activity</button>
+      <button onClick={() => navigate("/activities")}>Create Activity</button>
     </>
   );
 }
