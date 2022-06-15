@@ -1,3 +1,4 @@
+import { CountryActivities } from "../CountryActivities/CountryActivities";
 export function CountryDetail({ info }) {
   return (
     <>
@@ -10,6 +11,10 @@ export function CountryDetail({ info }) {
         Area:{info.area}km<sup>2</sup>
       </h2>
       <h2>Population:{info.population}</h2>
+      <hr />
+      <h2>Activities</h2>
+      <CountryActivities activities={info.activities} />
+      <button>Create Activity</button>
     </>
   );
 }
