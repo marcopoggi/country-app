@@ -8,7 +8,7 @@ import {
   getOrderedCountries,
 } from "../handlers/countries";
 
-export function useCountries() {
+export function useCountries(all = false) {
   const [loading, setLoading] = useState(false);
   const { countries, countriesToView, error, filters, order } = useSelector(
     (state) => state.countries
@@ -21,13 +21,14 @@ export function useCountries() {
       if (countries.length === 0) {
         dispatch(setCountries());
       } else setLoading(false);
-
-      const filtered = getFilteredCountries(countries, filters);
-      const ordered = getOrderedCountries(filtered, order);
-      dispatch(setCountriesToView(ordered));
+      if (!all) {
+        const filtered = getFilteredCountries(countries, filters);
+        const ordered = getOrderedCountries(filtered, order);
+        dispatch(setCountriesToView(ordered));
+      }
     },
-    [countries.length, dispatch, countries, filters, order]
+    [countries.length, dispatch, countries, filters, order, all]
   );
 
-  return { countries: countriesToView, error, loading };
+  return { countries: all ? countries : countriesToView, error, loading };
 }
