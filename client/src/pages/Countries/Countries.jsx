@@ -10,7 +10,6 @@ export function Countries() {
       <Searcher />
       <Preferences />
       <CountryList />
-      {/* Pagination Component */}
     </div>
   );
 }
