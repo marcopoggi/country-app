@@ -10,4 +10,14 @@ async function getAllCountries() {
   }
 }
 
-export { getAllCountries };
+async function getCountryDetail(nameOrId) {
+  try {
+    const response = await fetch(`${API_URL}/countries/${nameOrId}`);
+    const data = await response.json();
+    return { response: data };
+  } catch (e) {
+    return { response: { error: "Error when trying to get the detail" } };
+  }
+}
+
+export { getAllCountries, getCountryDetail };
