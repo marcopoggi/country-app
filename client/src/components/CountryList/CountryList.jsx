@@ -1,46 +1,44 @@
 import { useCountries } from "../../hooks/useCountries";
 import { ErrorSign } from "../ErrorSign/ErrorSign";
 import { Loader } from "../Loader/Loader";
-import { CountryCard } from "../CountryCard/CountryCard";
+import { CountryCards } from "../CountryCards/CountryCards";
 import { Pagination } from "../Pagination/Pagination";
 import { useEffect, useState } from "react";
 
 export function CountryList() {
   const { countries, error, loading } = useCountries();
-  const [countriesToView, setCountriesToView] = useState(countries);
+  const [connectionFailure, setConnectionFailure] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [page, setPage] = useState(1);
 
   useEffect(
     function () {
-      setCountriesToView(countries);
       setTotalPages(Math.ceil(countries.length / 10));
-      setCurrentPage(1);
+      setPage(1);
     },
     [countries]
   );
 
-  return loading ? (
-    <Loader />
-  ) : error.state ? (
-    <ErrorSign message={error.msg} />
-  ) : countriesToView.length === 0 ? (
-    // add component for when no countries are found.
-    <h2>No countries found</h2>
-  ) : (
+  return (
     <div>
-      <div style={{ display: "flex" }}>
-        {countriesToView
-          .slice(currentPage * 10 - 10, currentPage * 10)
-          .map((country) => (
-            <CountryCard {...country} key={country.name} />
-          ))}
-      </div>
-      <Pagination
-        total={totalPages}
-        actual={currentPage}
-        setPage={setCurrentPage}
-      />
+      {loading ? (
+        <>
+          {connectionFailure ? (
+            <ErrorSign title="Server timed out" />
+          ) : (
+            setTimeout(() => setConnectionFailure(true), 3000) && <Loader />
+          )}
+        </>
+      ) : error.state ? (
+        <ErrorSign message={error.msg} />
+      ) : countries.length > 0 ? (
+        <div>
+          <CountryCards countries={countries} page={page} />
+          <Pagination total={totalPages} actual={page} setPage={setPage} />
+        </div>
+      ) : (
+        <h1>Countries Not Found</h1>
+      )}
     </div>
   );
 }
