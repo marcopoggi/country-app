@@ -10,7 +10,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="countries" element={<Countries />} />
-          <Route path="countries/:id" element={<CountryDetail/>} />
+          <Route path="countries/:idOrName" element={<CountryDetail />} />
           <Route path="activities" element={<h1>Create activity</h1>} />
           <Route path="*" element={<h1>Page Not Found</h1>} />
         </Routes>
