@@ -20,10 +20,10 @@ export function CountryList() {
 
   return (
     <div>
-      {loading ? (
-        <Loader />
-      ) : error.state ? (
+      {error.state ? (
         <ErrorSign message={error.msg} />
+      ) : loading ? (
+        <Loader />
       ) : countries.length > 0 ? (
         <div>
           <CountryCards countries={countries} page={page} />
