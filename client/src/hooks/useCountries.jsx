@@ -17,11 +17,11 @@ export function useCountries() {
 
   useEffect(
     function () {
+      setLoading(true);
       if (countries.length === 0) {
-        setLoading(true);
         dispatch(setCountries());
-      }
-      setLoading(false);
+      } else setLoading(false);
+
       const filtered = getFilteredCountries(countries, filters);
       const ordered = getOrderedCountries(filtered, order);
       dispatch(setCountriesToView(ordered));
