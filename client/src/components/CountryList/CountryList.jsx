@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 
 export function CountryList() {
   const { countries, error, loading } = useCountries();
-  const [connectionFailure, setConnectionFailure] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
   const [page, setPage] = useState(1);
 
@@ -22,13 +21,7 @@ export function CountryList() {
   return (
     <div>
       {loading ? (
-        <>
-          {connectionFailure ? (
-            <ErrorSign title="Server timed out" />
-          ) : (
-            setTimeout(() => setConnectionFailure(true), 3000) && <Loader />
-          )}
-        </>
+        <Loader />
       ) : error.state ? (
         <ErrorSign message={error.msg} />
       ) : countries.length > 0 ? (
