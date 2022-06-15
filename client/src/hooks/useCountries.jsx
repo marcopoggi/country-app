@@ -20,7 +20,8 @@ export function useCountries() {
       if (countries.length === 0) {
         setLoading(true);
         dispatch(setCountries());
-      } else setLoading(false);
+      }
+      setLoading(false);
       const filtered = getFilteredCountries(countries, filters);
       const ordered = getOrderedCountries(filtered, order);
       dispatch(setCountriesToView(ordered));
