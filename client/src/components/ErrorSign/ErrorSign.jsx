@@ -1,7 +1,8 @@
-export function ErrorSign({ message }) {
+export function ErrorSign({ message, title = "Something has wrong", img }) {
   return (
     <div>
-      <h3>Something has wrong</h3>
+      <img src={img} alt="⚠️" />
+      <h3>{title}</h3>
       <h4>{message}</h4>
     </div>
   );
