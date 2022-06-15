@@ -9,22 +9,21 @@ import {
 } from "../handlers/countries";
 
 export function useCountries() {
+  const [loading, setLoading] = useState(false);
   const { countries, countriesToView, error, filters, order } = useSelector(
     (state) => state.countries
   );
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
 
   useEffect(
     function () {
-      setLoading(true);
       if (countries.length === 0) {
+        setLoading(true);
         dispatch(setCountries());
-      }
+      } else setLoading(false);
       const filtered = getFilteredCountries(countries, filters);
       const ordered = getOrderedCountries(filtered, order);
       dispatch(setCountriesToView(ordered));
-      setLoading(false);
     },
     [countries.length, dispatch, countries, filters, order]
   );
