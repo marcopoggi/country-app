@@ -1,33 +1,21 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getCountryDetail } from "../../services/countries";
 import { ErrorSign } from "../../components/ErrorSign/ErrorSign";
 import { Loader } from "../../components/Loader/Loader";
 import { CountryDetail } from "../../components/CountryDetail/CountryDetail";
+import { useDetail } from "../../hooks/useDetail";
+import { Logo } from "../../components/Logo/Logo";
 
 export function Detail() {
-  const { idOrName } = useParams();
-  const [info, setInfo] = useState(null);
-
-  useEffect(
-    function () {
-      getCountryDetail(idOrName).then((data) => {
-        setInfo(data.response);
-      });
-    },
-    [idOrName]
-  );
+  const { countryDetail, error, loading } = useDetail();
 
   return (
     <div>
-      {info ? (
-        info?.error ? (
-          <ErrorSign />
-        ) : (
-          <CountryDetail info={info} />
-        )
-      ) : (
+      <Logo />
+      {error.state ? (
+        <ErrorSign />
+      ) : loading ? (
         <Loader />
+      ) : (
+        <CountryDetail info={countryDetail} />
       )}
     </div>
   );
