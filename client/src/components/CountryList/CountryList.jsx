@@ -1,5 +1,5 @@
 import { useCountries } from "../../hooks/useCountries";
-import { ErrorSign } from "../ErrorSign/ErrorSign";
+import { InfoSign } from "../InfoSign/InfoSign";
 import { Loader } from "../Loader/Loader";
 import { CountryCards } from "../CountryCards/CountryCards";
 import { Pagination } from "../Pagination/Pagination";
@@ -21,7 +21,7 @@ export function CountryList() {
   return (
     <div>
       {error.state ? (
-        <ErrorSign message={error.msg} />
+        <InfoSign message={error.msg} />
       ) : loading ? (
         <Loader />
       ) : countries.length > 0 ? (
