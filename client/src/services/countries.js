@@ -20,4 +20,24 @@ async function getCountryDetail(nameOrId) {
   }
 }
 
-export { getAllCountries, getCountryDetail };
+async function setActivity(activity) {
+  try {
+    const response = await fetch(`${API_URL}/activities`, {
+      method: "POST",
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...activity,
+        countries: activity.selectedCountries,
+      }),
+    });
+    const data = await response.json();
+    return { response: data };
+  } catch (e) {
+    return {
+      response: { error: "Error creating activity, please try again later" },
+    };
+  }
+}
+
+export { getAllCountries, getCountryDetail, setActivity };
