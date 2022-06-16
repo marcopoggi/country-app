@@ -1,4 +1,4 @@
-import { ErrorSign } from "../../components/ErrorSign/ErrorSign";
+import { InfoSign } from "../../components/InfoSign/InfoSign";
 import { Loader } from "../../components/Loader/Loader";
 import { CountryDetail } from "../../components/CountryDetail/CountryDetail";
 import { useDetail } from "../../hooks/useDetail";
@@ -11,7 +11,7 @@ export function Detail() {
     <div>
       <Logo />
       {error.state ? (
-        <ErrorSign />
+        <InfoSign />
       ) : loading ? (
         <Loader />
       ) : (
