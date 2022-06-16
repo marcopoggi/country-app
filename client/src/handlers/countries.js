@@ -29,7 +29,7 @@ const filteringCountries = (country = {}, filters = {}) => {
           break;
         }
         for (let act of activities) {
-          if (country[key].includes(act)) {
+          if (country[key].some(({ name }) => name === act)) {
             matches++;
             break;
           }
