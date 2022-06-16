@@ -30,5 +30,9 @@ export function useCountries(all = false) {
     [countries.length, dispatch, countries, filters, order, all]
   );
 
-  return { countries: all ? countries : countriesToView, error, loading };
+  return {
+    countries: all ? getOrderedCountries(countries) : countriesToView,
+    error,
+    loading,
+  };
 }
