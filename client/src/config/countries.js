@@ -5,10 +5,16 @@ export const CONTINENTS = [
   "asia",
   "europe",
   "oceania",
-];
-export const ORDERS = ["name", "population"];
-export const ACTIVITIES = ["ski", "museum", "climbing", "beach", "paragliding"];
-export const SEASONS = ["any", "autumn", "winter", "spring", "summer"];
+].sort();
+export const ORDERS = ["name", "population"].sort();
+export const ACTIVITIES = [
+  "ski",
+  "museum",
+  "climbing",
+  "beach",
+  "paragliding",
+].sort();
+export const SEASONS = ["any", "autumn", "winter", "spring", "summer"].sort();
 
 export const INITIAL_FORM = {
   name: "",
