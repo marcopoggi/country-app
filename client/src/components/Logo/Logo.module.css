@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
+.words {
+  font-family: "Monoton", Arial, Helvetica, sans-serif;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  text-shadow: 0 -1px 5px var(--first-color);
+}
+
+.earth {
+  font-size: 1em;
+}
