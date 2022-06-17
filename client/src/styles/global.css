@@ -1,21 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
 
 :root {
-  --pri-color-solid: rgba(23, 128, 111);
-  --sec-color-solid: rgba(23, 128, 63);
-  --pri-color-transparent: rgba(23, 128, 111, 0.85);
-  --sec-color-transparent: rgba(23, 128, 63, 0.75);
+  --first-color: #2EC1AC;
+  --second-color: #3E978B;
+  --third-color: #D2E603;
+  --fourth-color: #EFF48E;
+  --first-color-trans: rgba(46, 193, 172, 0.9);
+  --second-color-trans: rgba(62, 151, 139, 0.7);
+  --third-color-trans: rgba(0, 0, 0, 0.7);
+  --fourth-color-trans: rgba(239, 244, 142, 0.9);
+  --background-color-trans: rgba(31, 31, 31, 0.8);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: normal;
 }
 
 *::selection {
   color: #000;
   background-color: #CCC;
+}
+
+.App {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("../assets/img/welcome-background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.App-background {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--background-color-trans);
+  animation: background-alternate 5s alternate infinite both;
+}
+
+@keyframes background-alternate {
+  0% {
+    background-color: var(--background-color-trans);
+  }
+
+  100% {
+    background-color: var(--third-color-trans);
+  }
 }
