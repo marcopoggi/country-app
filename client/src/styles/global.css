@@ -1,22 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600&display=swap');
 
 :root {
-  --first-color: #2EC1AC;
-  --second-color: #3E978B;
-  --third-color: #D2E603;
-  --fourth-color: #EFF48E;
-  --first-color-trans: rgba(46, 193, 172, 0.9);
-  --second-color-trans: rgba(62, 151, 139, 0.7);
-  --third-color-trans: rgba(0, 0, 0, 0.7);
-  --fourth-color-trans: rgba(239, 244, 142, 0.9);
-  --background-color-trans: rgba(31, 31, 31, 0.8);
+  --first-color: #7636b1;
+  --second-color: #2c2c2c;
+  --third-color: #eeeeee;
+  --second-color-op: #252525b7;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: 'Mukta', sans-serif;
   font-weight: normal;
 }
 
@@ -28,25 +23,10 @@
 .App {
   width: 100%;
   min-height: 100vh;
-  background-image: url("../assets/img/welcome-background.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 }
 
 .App-background {
   width: 100%;
   min-height: 100vh;
-  background-color: var(--background-color-trans);
-  animation: background-alternate 5s alternate infinite both;
-}
-
-@keyframes background-alternate {
-  0% {
-    background-color: var(--background-color-trans);
-  }
-
-  100% {
-    background-color: var(--third-color-trans);
-  }
+  background-color: var(--second-color);
 }
