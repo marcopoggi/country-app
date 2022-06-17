@@ -4,9 +4,23 @@
   font-family: "Monoton", Arial, Helvetica, sans-serif;
   font-size: 2.5em;
   text-transform: uppercase;
-  text-shadow: 0 -1px 5px var(--first-color);
+  text-shadow: 0 0 5px var(--first-color);
+  text-align: center;
+  color: #FFF;
 }
 
 .earth {
-  font-size: 1em;
+  height: .9em;
+  width: .9em;
+  animation: earth-rotate 5s infinite linear both;
+}
+
+@keyframes earth-rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
