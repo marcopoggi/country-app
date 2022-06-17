@@ -1,116 +1,48 @@
 .container {
-  font-size: 16px;
-  width: 100%;
+  background-image: url("../../assets/img/landing_background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   min-height: 100vh;
+  width: 100%;
+}
+
+.welcome_container {
   display: flex;
-  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  gap: 2em;
+  font-size: 2.5vh;
+  background-color: var(--second-color-op);
+  color: var(--third-color);
+  min-height: 100vh;
+  width: 100%;
 }
 
 .welcome_words {
-  color: #FFF;
-  padding: 6px;
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  gap: .5em;
-  width: 100%;
   height: auto;
-  text-align: center;
-}
-
-.welcome_words>h3 {
-  font-size: 1.5em;
-
-}
-
-.welcome_btn {
-  font-size: 1.3em;
-  font-weight: bold;
-  letter-spacing: .1em;
-  border: none;
-  border-radius: 6px;
-  color: #FFF;
-  cursor: pointer;
-  margin-top: 1em;
-  padding: .3em .5em;
-  animation: entrance-welcome-btn 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
-  background: var(--second-color-trans);
-  min-width: 150px;
-}
-
-
-.decoration {
-  display: none;
-  padding: 6px;
-  align-self: flex-end;
-  justify-content: flex-end;
-  align-items: center;
-  margin-right: 2em;
-  margin-bottom: 2em;
-  border-radius: 50%;
-  background: var(--second-color-trans);
-  background: radial-gradient(circle, var(--first-color-trans) 0%, var(--second-color-trans) 100%);
-}
-
-.decoration>img {
   width: 100%;
-  height: 40vh;
-  animation: world-rotate 4s linear infinite both;
+  padding: 1em;
 }
 
-@keyframes entrance-welcome-btn {
-  0% {
-    filter: blur(4px);
-    opacity: 0;
-  }
-
-  100% {
-    filter: blur(0px);
-    opacity: 1;
-  }
+.welcome_words_btn {
+  color: var(--third-color);
+  cursor: pointer;
+  background-color: var(--first-color);
+  border-radius: .4em;
+  border: none;
+  margin-top: 3em;
+  min-width: 9em;
+  padding: .3em;
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
-
-@keyframes world-rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@media only screen and (min-width:1024px) {
-  .container {
-    font-size: 18px;
-    padding: 2em;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-
-  .decoration {
-    display: flex;
-  }
-
-  .welcome_words {
-    align-items: flex-start;
-  }
-}
-
-
-@media only screen and (min-width:1920px) {
-  .container {
-    font-size: 24px;
-  }
-}
-
-@media only screen and (min-width:2160px) {
-  .container {
-    font-size: 32px;
-  }
+.welcome_words_btn:hover{
+  outline: 2px solid var(--third-color);
+  transition: all 50ms;
 }
