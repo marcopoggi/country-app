@@ -12,6 +12,7 @@
 .earth {
   height: .9em;
   width: .9em;
+  filter: drop-shadow(0 0 2.5px var(--first-color));
   animation: earth-rotate 5s infinite linear both;
 }
 
