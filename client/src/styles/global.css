@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600&display=swap');
 
 :root {
-  --first-color: #7636b1;
-  --second-color: #2c2c2c;
-  --third-color: #eeeeee;
+  --first-color: #23A8FE;
+  --second-color: #43CB8E;
+  --third-color: #077e48;
   --second-color-op: #252525b7;
+  --second-color-op-more: #0f0f0fe0;
+  --searcher-background-first: rgba(15, 15, 15, 0.9);
+  --searcher-background-second: rgba(37, 37, 37, 0.9);
 }
 
 * {
