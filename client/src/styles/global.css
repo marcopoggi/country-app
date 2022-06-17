@@ -4,6 +4,8 @@
   --first-color: #23A8FE;
   --second-color: #43CB8E;
   --third-color: #077e48;
+  --first-color-trans: #23a6fee8;
+  --second-color-trans: #43cb8ee0;
   --second-color-op: #252525b7;
   --second-color-op-more: #0f0f0fe0;
   --searcher-background-first: rgba(15, 15, 15, 0.9);
@@ -26,10 +28,8 @@
 .App {
   width: 100%;
   min-height: 100vh;
-}
-
-.App-background {
-  width: 100%;
-  min-height: 100vh;
-  background-color: var(--second-color);
+  background-image: url("../assets/img/landing_background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

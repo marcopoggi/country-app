@@ -7,15 +7,13 @@ import { Activities } from "./pages/Activities/Activities.jsx";
 function App() {
   return (
     <div className="App">
-      <div className="App-background">
-        <Routes>
-          <Route path="/" element={<Welcome />} />
-          <Route path="countries" element={<Countries />} />
-          <Route path="countries/:idOrName" element={<Detail />} />
-          <Route path="activities" element={<Activities />} />
-          <Route path="*" element={<h1>Page Not Found</h1>} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="countries" element={<Countries />} />
+        <Route path="countries/:idOrName" element={<Detail />} />
+        <Route path="activities" element={<Activities />} />
+        <Route path="*" element={<h1>Page Not Found</h1>} />
+      </Routes>
     </div>
   );
 }

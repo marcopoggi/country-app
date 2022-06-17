@@ -1,6 +1,6 @@
 .container {
-  background: var(--first-color);
-  background: linear-gradient(119deg, var(--first-color) 0%, var(--second-color)100%);
+  background: var(--first-color-trans);
+  background: linear-gradient(119deg, var(--first-color-trans) 0%, var(--second-color-trans)100%);
   min-height: 100vh;
   width: 100%;
 }
@@ -32,13 +32,13 @@
 }
 
 @media only screen and (min-width:768px) {
-  .countries_container{
+  .countries_container {
     font-size: 16px;
   }
 }
 
 @media only screen and (min-width:1920px) {
-  .countries_container{
+  .countries_container {
     font-size: 24px;
   }
 }
