@@ -7,7 +7,7 @@ import { Activities } from "./pages/Activities/Activities.jsx";
 function App() {
   return (
     <div className="App">
-      <div className="background">
+      <div className="App-background">
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="countries" element={<Countries />} />
