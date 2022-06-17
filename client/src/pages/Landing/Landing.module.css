@@ -13,7 +13,7 @@
   align-items: center;
   font-size: 16px;
   background-color: var(--second-color-op);
-  color: var(--third-color);
+  color: #FFF;
   min-height: 100vh;
   width: 100%;
 }
@@ -29,9 +29,9 @@
 }
 
 .welcome_words_btn {
-  color: var(--third-color);
+  color: #FFF;
   cursor: pointer;
-  background-color: var(--first-color);
+  background-color: var(--third-color);
   border-radius: .4em;
   border: none;
   margin-top: 3em;
@@ -42,13 +42,13 @@
   letter-spacing: 1px;
 }
 
-.welcome_words_btn:hover{
-  outline: 2px solid var(--third-color);
+.welcome_words_btn:hover {
+  outline: 2px solid #FFF;
   transition: all 50ms;
 }
 
-@media only screen and (min-width:768px){
-  .welcome_container{
+@media only screen and (min-width:768px) {
+  .welcome_container {
     font-size: 2vw;
   }
 }
