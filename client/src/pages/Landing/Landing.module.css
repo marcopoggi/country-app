@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2.5vh;
+  font-size: 16px;
   background-color: var(--second-color-op);
   color: var(--third-color);
   min-height: 100vh;
@@ -45,4 +45,10 @@
 .welcome_words_btn:hover{
   outline: 2px solid var(--third-color);
   transition: all 50ms;
+}
+
+@media only screen and (min-width:768px){
+  .welcome_container{
+    font-size: 2vw;
+  }
 }
