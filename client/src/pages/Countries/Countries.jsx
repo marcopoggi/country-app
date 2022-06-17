@@ -14,13 +14,15 @@ import {
 export function Countries() {
   const [preferences, setPreferences] = useState(false);
 
+  const togglePreferences = () => setPreferences(!preferences);
+
   return (
     <div className={container}>
       <div className={countries_container}>
         <Logo />
-        <Searcher handlePreferences={() => setPreferences(!preferences)} />
+        <Searcher handlePreferences={togglePreferences} />
         <div className={preferences ? open_prefs : close_prefs}>
-          <Preferences />
+          <Preferences handlePreferences={togglePreferences} />
         </div>
         <CountryList />
       </div>

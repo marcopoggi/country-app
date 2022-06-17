@@ -7,7 +7,7 @@ import {
 import { PreferenceSection } from "../PreferenceSection/PreferenceSection";
 import { CONTINENTS, ORDERS, ACTIVITIES } from "../../config/countries";
 
-export function Preferences() {
+export function Preferences({ handlePreferences }) {
   const dispatch = useDispatch();
   const [filters, setFilters] = useState({ continent: [], activities: [] });
   const [order, setOrder] = useState({ sortBy: "", descendent: false });
@@ -55,6 +55,7 @@ export function Preferences() {
 
   return (
     <div>
+      <button onClick={handlePreferences}>Close</button>
       <form onSubmit={applyPreferences}>
         <h2>Preferences</h2>
         <PreferenceSection
@@ -81,7 +82,9 @@ export function Preferences() {
           <input type="checkbox" name="descendent" onClick={handleOrder} />
           <label htmlFor="descendent">Descendent</label>
         </div>
-        <button disabled={!newPreferences}>Apply</button>
+        <button disabled={!newPreferences} onClick={handlePreferences}>
+          Apply
+        </button>
       </form>
     </div>
   );
