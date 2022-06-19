@@ -15,12 +15,6 @@
   width: 100%;
 }
 
-
-
-.countries_container * {
-  outline: 2px solid rgb(180, 125, 22);
-}
-
 /* preferences */
 
 .open_prefs {
