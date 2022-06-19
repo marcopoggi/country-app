@@ -13,8 +13,9 @@ export function useDetail() {
   useEffect(
     function () {
       setLoading(true);
+      let searchParam = idOrName.toLowerCase();
       let searchLocalDetail = details.find(
-        ({ id, name }) => name === idOrName || id === idOrName
+        ({ id, name }) => name === searchParam || id === searchParam
       );
       if (!searchLocalDetail) {
         dispatch(setDetail(idOrName));
