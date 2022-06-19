@@ -28,7 +28,8 @@
   position: absolute;
   width: 100%;
   min-height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  background: var(--first-color-trans);
+  background: linear-gradient(90deg, #242424 5%, var(--second-color)100%);
 }
 
 .close_prefs {
@@ -38,6 +39,13 @@
 @media only screen and (min-width:768px) {
   .countries_container {
     font-size: 16px;
+  }
+
+  .open_prefs {
+    width: 40%;
+    max-height: 100vh;
+    overflow-y: scroll;
+    scrollbar-color: #FFF var(--second-color);
   }
 }
 
