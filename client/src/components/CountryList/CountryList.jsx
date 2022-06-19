@@ -4,6 +4,11 @@ import { Loader } from "../Loader/Loader";
 import { CountryCards } from "../CountryCards/CountryCards";
 import { Pagination } from "../Pagination/Pagination";
 import { useEffect, useState } from "react";
+//styles
+import {
+  container,
+  container_countries_pagination,
+} from "./CountryList.module.css";
 
 export function CountryList() {
   const { countries, error, loading } = useCountries();
@@ -19,18 +24,18 @@ export function CountryList() {
   );
 
   return (
-    <div>
+    <div className={container}>
       {error.state ? (
         <InfoSign message={error.msg} />
       ) : loading ? (
         <Loader />
       ) : countries.length > 0 ? (
-        <div>
+        <div className={container_countries_pagination}>
           <CountryCards countries={countries} page={page} />
           <Pagination total={totalPages} actual={page} setPage={setPage} />
         </div>
       ) : (
-        <h1>Countries Not Found</h1>
+        <InfoSign message="Countries Not Found" />
       )}
     </div>
   );
