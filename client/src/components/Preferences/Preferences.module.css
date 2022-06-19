@@ -1,0 +1,83 @@
+.preferences_container {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  font-size: 1.3em;
+}
+
+.preferences_header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  gap: 10px;
+  align-items: center;
+  background-color: var(--second-color-op);
+  min-height: 10vh;
+}
+
+.preferences_header>h2 {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* back btn */
+
+.preferences_back_btn {
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 40px;
+  margin: 6px;
+  height: 40px;
+}
+
+.preferences_back_btn>img {
+  width: 100%;
+  height: auto;
+}
+
+.preferences_back_btn>img:hover {
+  transform: scale(0.9);
+  transition: all 300ms;
+}
+
+/* settings */
+.preferences_settings {
+  font-size: 1.2em;
+  min-height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.preferences_settings_apply {
+  background-color: rgb(19, 19, 19);
+  width: 100%;
+  padding: 6px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.preferences_settings_apply>button {
+  cursor: pointer;
+  width: 40%;
+  padding: 6px;
+  border-radius: 6px;
+  font-size: .9em;
+  font-weight: bold;
+  background-color: var(--third-color);
+  color: #FFF;
+  letter-spacing: 1px;
+  border: none;
+}
+
+.preferences_settings_apply>button:disabled {
+  cursor: not-allowed;
+  opacity: 50%;
+  color: #ddd;
+}
