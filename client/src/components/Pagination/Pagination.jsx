@@ -1,4 +1,13 @@
 import { useEffect, useState } from "react";
+//styles
+import {
+  container_pagination,
+  containter_pagination_pages,
+  prev_btn,
+  next_btn,
+} from "./Pagination.module.css";
+import prev_icon from "../../assets/img/prev_page.png";
+import next_icon from "../../assets/img/next_page.png";
 
 export function Pagination({ actual, total, setPage }) {
   const [pages, setPages] = useState([]);
@@ -15,11 +24,12 @@ export function Pagination({ actual, total, setPage }) {
   );
 
   const handleChangePage = (e) => {
-    const value = e.target.value;
+    const value = e.target.value || e.target.parentNode.value;
     switch (value) {
       case "prev":
         return actual > 1 && setPage(actual - 1);
       case "next":
+        console.log("next");
         return actual < total && setPage(actual + 1);
       default:
         const pageNumber = Number(value);
@@ -28,22 +38,55 @@ export function Pagination({ actual, total, setPage }) {
   };
 
   return (
-    <div>
-      <button key={"Previous"} value="prev" onClick={handleChangePage}>
-        Previous
+    <div className={container_pagination}>
+      <button
+        key={"Previous"}
+        value="prev"
+        onClick={handleChangePage}
+        className={prev_btn}
+      >
+        <img src={prev_icon} alt="Prev" value="prev" />
       </button>
-      {pages.map((page) => (
+      <button
+        key={1}
+        value={1}
+        onClick={handleChangePage}
+        disabled={1 === actual}
+      >
+        1
+      </button>
+      <div className={containter_pagination_pages}>
+        {pages.map((page) => {
+          if (page === 1 || page === pages.length) return null;
+          return (
+            <button
+              key={page}
+              value={page}
+              onClick={handleChangePage}
+              disabled={page === actual}
+            >
+              {page}
+            </button>
+          );
+        })}
+      </div>
+      {pages.length > 1 ? (
         <button
-          key={page}
-          value={page}
+          key={pages.length}
+          value={pages.length}
           onClick={handleChangePage}
-          disabled={page === actual}
+          disabled={pages.length === actual}
         >
-          {page}
+          {pages.length}
         </button>
-      ))}
-      <button key={"Next"} value="next" onClick={handleChangePage}>
-        Next
+      ) : null}
+      <button
+        key={"Next"}
+        value="next"
+        onClick={handleChangePage}
+        className={next_btn}
+      >
+        <img src={next_icon} alt="Next" value="next" />
       </button>
     </div>
   );
