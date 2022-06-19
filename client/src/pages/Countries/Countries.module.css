@@ -27,7 +27,7 @@
   display: flex;
   position: absolute;
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   background: var(--first-color-trans);
   background: linear-gradient(90deg, #242424 5%, var(--second-color)100%);
 }
@@ -42,8 +42,8 @@
   }
 
   .open_prefs {
-    width: 40%;
-    max-height: 100vh;
+    width: 35%;
+    height: 100%;
     overflow-y: scroll;
     scrollbar-color: #FFF var(--second-color);
   }
