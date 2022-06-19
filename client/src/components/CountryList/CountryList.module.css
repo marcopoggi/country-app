@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  padding: 10px;
+
+}
+
+.container_countries_pagination {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 75vh;
+  width: 100%;
+}
