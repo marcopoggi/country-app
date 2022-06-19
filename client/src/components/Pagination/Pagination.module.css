@@ -10,11 +10,10 @@
 }
 
 .containter_pagination_pages {
-  width: 100%;
   gap: 5px;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   overflow-x: hidden;
   text-overflow: ellipsis;
