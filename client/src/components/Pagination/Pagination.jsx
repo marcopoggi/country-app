@@ -29,7 +29,6 @@ export function Pagination({ actual, total, setPage }) {
       case "prev":
         return actual > 1 && setPage(actual - 1);
       case "next":
-        console.log("next");
         return actual < total && setPage(actual + 1);
       default:
         const pageNumber = Number(value);
@@ -44,6 +43,7 @@ export function Pagination({ actual, total, setPage }) {
         value="prev"
         onClick={handleChangePage}
         className={prev_btn}
+        translate="no"
       >
         <img src={prev_icon} alt="Prev" value="prev" />
       </button>
@@ -52,6 +52,7 @@ export function Pagination({ actual, total, setPage }) {
         value={1}
         onClick={handleChangePage}
         disabled={1 === actual}
+        translate="no"
       >
         1
       </button>
@@ -64,6 +65,7 @@ export function Pagination({ actual, total, setPage }) {
               value={page}
               onClick={handleChangePage}
               disabled={page === actual}
+              translate="no"
             >
               {page}
             </button>
@@ -76,6 +78,7 @@ export function Pagination({ actual, total, setPage }) {
           value={pages.length}
           onClick={handleChangePage}
           disabled={pages.length === actual}
+          translate="no"
         >
           {pages.length}
         </button>
@@ -85,6 +88,7 @@ export function Pagination({ actual, total, setPage }) {
         value="next"
         onClick={handleChangePage}
         className={next_btn}
+        translate="no"
       >
         <img src={next_icon} alt="Next" value="next" />
       </button>
