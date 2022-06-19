@@ -1,0 +1,69 @@
+.card {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #FFF;
+  width: 80%;
+  height: 150px;
+  text-decoration: none;
+  border-radius: 7px;
+}
+
+.card_basic_info {
+  color: #FFF;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 6px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  text-transform: capitalize;
+  height: 20%;
+  overflow-y: hidden;
+}
+
+.card_basic_info>h3 {
+  background-color: var(--third-color);
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 6px;
+  min-width: 100px;
+}
+
+.card_basic_info:hover {
+  border-radius: 6px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+}
+
+.card_basic_info:active {
+  border-radius: 6px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+}
+
+@media only screen and (min-width:768px) {
+  .card {
+    width: 100%;
+  }
+
+  .card_basic_info {
+    height: 28%;
+  }
+}
+
+@media only screen and (min-width:1920px) {
+  .card {
+    height: 230px;
+  }
+}
