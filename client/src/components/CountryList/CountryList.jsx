@@ -9,6 +9,7 @@ import {
   container,
   container_countries_pagination,
 } from "./CountryList.module.css";
+import unknown_country_icon from "../../assets/img/country-no-existent.png";
 
 export function CountryList() {
   const { countries, error, loading } = useCountries();
@@ -35,7 +36,7 @@ export function CountryList() {
           <Pagination total={totalPages} actual={page} setPage={setPage} />
         </div>
       ) : (
-        <InfoSign message="Countries Not Found" />
+        <InfoSign title="unknown country" img={unknown_country_icon} />
       )}
     </div>
   );
