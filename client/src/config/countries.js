@@ -7,13 +7,6 @@ export const CONTINENTS = [
   "oceania",
 ].sort();
 export const ORDERS = ["name", "population"].sort();
-export const ACTIVITIES = [
-  "ski",
-  "museum",
-  "climbing",
-  "beach",
-  "paragliding",
-].sort();
 export const SEASONS = ["any", "autumn", "winter", "spring", "summer"].sort();
 
 export const INITIAL_FORM = {
