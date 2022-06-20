@@ -3,22 +3,35 @@ import { CreateActivity } from "../../components/CreateActivity/CreateActivity";
 import { useCountries } from "../../hooks/useCountries";
 import { InfoSign } from "../../components/InfoSign/InfoSign";
 import { Loader } from "../../components/Loader/Loader";
+//styles
+import {
+  container,
+  container_header,
+  container_bg,
+} from "./Activities.module.css";
+import back_icon from "../../assets/img/back_btn.png";
 
 export function Activities() {
   const { error, countries, loading } = useCountries(true);
   const navigate = useNavigate();
 
   return (
-    <div>
-      <button onClick={() => navigate(-1)}>Back</button>
-      <h1>Create activity</h1>
-      {error.state ? (
-        <InfoSign />
-      ) : loading ? (
-        <Loader />
-      ) : (
-        <CreateActivity countries={countries} />
-      )}
+    <div className={container}>
+      <div className={container_bg}>
+        <div className={container_header}>
+          <button onClick={() => navigate(-1)}>
+            <img src={back_icon} alt="Back" />
+          </button>
+          <h1>Create activity</h1>
+        </div>
+        {error.state ? (
+          <InfoSign />
+        ) : loading ? (
+          <Loader />
+        ) : (
+          <CreateActivity countries={countries} />
+        )}
+      </div>
     </div>
   );
 }
