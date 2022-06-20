@@ -16,6 +16,17 @@ import {
 } from "../../config/countries";
 //serv
 import { setActivity } from "../../services/countries";
+//styles
+import {
+  form_container,
+  form_success,
+  form_countries_show,
+  form_countries_hidden,
+  input_check_radio,
+  form_field,
+} from "./CreateActivity.module.css";
+import location_icon from "../../assets/img/location_countries.png";
+import ok_icon from "../../assets/img/ok_icon.png";
 
 export function CreateActivity({ countries }) {
   const [success, setSuccess] = useState({ state: false, msg: "" });
@@ -98,51 +109,64 @@ export function CreateActivity({ countries }) {
   );
 
   return !success.state ? (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        onChange={handleField}
-        placeholder="Name"
-      />
-      {!errors.name ? null : <span>{errors.name}</span>}
-      <input
-        type="text"
-        name="duration"
-        onChange={handleField}
-        placeholder="Duration"
-      />
-      {!errors.duration ? null : <span>{errors.duration}</span>}
-      <input
-        type="text"
-        name="difficulty"
-        onChange={handleField}
-        placeholder="Difficulty"
-      />
-      {!errors.difficulty ? null : <span>{errors.difficulty}</span>}
-      <label htmlFor="season">Season</label>
-      <select name="season" onChange={handleField}>
-        {SEASONS.map((season) => (
-          <option value={season} key={season}>
-            {season}
-          </option>
-        ))}
-      </select>
-      {!errors.season ? null : <span>{errors.season}</span>}
-      <input
-        type="button"
-        value="Choose the Countries"
-        onClick={toogleShowCountries}
-      />
-      {!errors.selectedCountries ? null : (
-        <span>{errors.selectedCountries}</span>
-      )}
-      <div style={showCountries ? { display: "block" } : { display: "none" }}>
+    <form onSubmit={handleSubmit} className={form_container}>
+      <div className={form_field}>
+        <input
+          type="text"
+          name="name"
+          onChange={handleField}
+          placeholder="✏️ Name"
+        />
+        {!errors.name ? null : <span>{errors.name}</span>}
+      </div>
+      <div className={form_field}>
+        <input
+          type="text"
+          name="duration"
+          onChange={handleField}
+          placeholder="⏲️ Duration (minutes)"
+        />
+        {!errors.duration ? null : <span>{errors.duration}</span>}
+      </div>
+      <div className={form_field}>
+        <input
+          type="text"
+          name="difficulty"
+          onChange={handleField}
+          placeholder="📈 Difficulty (1-5)"
+        />
+        {!errors.difficulty ? null : <span>{errors.difficulty}</span>}
+      </div>
+      <div className={form_field}>
+        <label htmlFor="season">Season ❄️</label>
+        <select name="season" onChange={handleField}>
+          {SEASONS.map((season) => (
+            <option value={season} key={season}>
+              {season}
+            </option>
+          ))}
+        </select>
+        {!errors.season ? null : <span>{errors.season}</span>}
+      </div>
+      <div className={form_field}>
+        <label htmlFor="countries">Select Countries</label>
+        <button onClick={toogleShowCountries} type="button">
+          <img src={location_icon} alt="📍" />
+        </button>
+        {!errors.selectedCountries ? null : (
+          <span>{errors.selectedCountries}</span>
+        )}
+      </div>
+      <div
+        className={showCountries ? form_countries_show : form_countries_hidden}
+      >
         {countries.map(({ name }) => (
           <div key={name}>
             <input
+              className={input_check_radio}
               type="checkbox"
               name="selectedCountries"
+              id={name}
               value={name}
               onClick={handleField}
             />
@@ -152,15 +176,15 @@ export function CreateActivity({ countries }) {
       </div>
       <input
         type="submit"
-        value="Add activity"
+        value="Create Activity"
         disabled={valid ? false : true}
       />
     </form>
   ) : (
-    <div>
-      <InfoSign title={success.msg} />
+    <div className={form_success}>
+      <InfoSign title={success.msg} img={ok_icon} />
       <button onClick={() => setSuccess({ state: false, msg: "" })}>
-        Add more
+        Create More
       </button>
     </div>
   );
