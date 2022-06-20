@@ -70,7 +70,7 @@
 
 .loader_container>h3 {
   margin-top: 2em;
-  font-size: 1.7em;
+  font-size: 2em;
   animation: text_shadow_anim 0.4s ease-in-out infinite alternate;
 }
 
