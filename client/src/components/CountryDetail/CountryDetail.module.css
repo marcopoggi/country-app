@@ -1,0 +1,138 @@
+.container_detail {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.detail_data_container {
+  width: 100%;
+}
+
+.detail_data_title_about,
+.detail_data_title_activities {
+  width: 100%;
+  text-align: center;
+  font-size: 1.4em;
+  font-weight: bold;
+  text-shadow: 0 2px 2px #222;
+  background-color: var(--second-color-trans);
+}
+
+.detail_data_title_about {
+  border-right: 3px solid #1E3F43;
+}
+
+.detail_data_title_activities {
+  background-color: var(--second-color-trans);
+}
+
+
+
+.detail_data {
+  font-size: 1.1em;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 10vh;
+  text-transform: capitalize;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.07);
+  border-right: 3px solid rgba(255, 255, 255, 0.07);
+}
+
+.detail_data:last-child {
+  border-bottom: none;
+}
+
+.detail_data>h3 {
+  text-shadow: 0 0 3px #000;
+  letter-spacing: 1px;
+  padding: 0 6px;
+  width: 40%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  font-weight: bold;
+  min-height: 10vh;
+}
+
+.detail_flag>img {
+  border-radius: 6px;
+  margin: 0;
+  width: auto;
+  height: 9vh;
+}
+
+.detail_data>span,
+.detail_data>div {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 60%;
+  text-align: center;
+  max-height: 10vh;
+  padding-right: 1em;
+}
+
+/* activivites */
+.container_activities {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  /* background-color: green; */
+}
+
+.container_activities>button {
+  cursor: pointer;
+  width: 40%;
+  font-size: 1.3em;
+  margin: 1em;
+  padding: 6px;
+  font-weight: bold;
+  background-color: var(--third-color);
+  color: #FFF;
+  border: none;
+  border-radius: 6px;
+}
+
+.activities_cards {
+  width: 100%;
+  padding: .5em;
+  height: auto;
+  display: grid;
+  row-gap: 20px;
+  column-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-items: center;
+  align-content: center;
+}
+
+@media only screen and (min-width:1024px) {
+  .container_activities>button {
+    width: 20%;
+  }
+
+  .container_detail {
+    flex-flow: row nowrap;
+  }
+
+  .detail_data_container {
+    width: 30%;
+  }
+
+  .activities_cards {
+    height: 68vh;
+    overflow-y: auto;
+    justify-items: center;
+    align-content: flex-start;
+  }
+
+
+  .container_activities {
+    width: 70%;
+  }
+}
