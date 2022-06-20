@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { useActivities } from "../../hooks/useActivities";
 import { useDispatch } from "react-redux";
 import {
   setCountriesByFilters,
   setCountriesByOrder,
 } from "../../redux/actions/countries";
 import { PreferenceSection } from "../PreferenceSection/PreferenceSection";
-import { CONTINENTS, ORDERS, ACTIVITIES } from "../../config/countries";
+import { CONTINENTS, ORDERS } from "../../config/countries";
 //styles
 import {
   preferences_container,
@@ -21,6 +22,7 @@ import sort_img from "../../assets/img/sort.png";
 
 export function Preferences({ handlePreferences }) {
   const dispatch = useDispatch();
+  const { ACTIVITIES } = useActivities();
   const [filters, setFilters] = useState({ continent: [], activities: [] });
   const [order, setOrder] = useState({ sortBy: "", descendent: false });
   const [newPreferences, setNewPreferences] = useState(false);
@@ -87,7 +89,7 @@ export function Preferences({ handlePreferences }) {
           icon={continent_img}
         />
         <PreferenceSection
-          data={ACTIVITIES}
+          data={Array.from(ACTIVITIES)}
           handler={handleFilters}
           name="activities"
           title="Activities"
