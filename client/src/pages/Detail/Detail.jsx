@@ -10,6 +10,7 @@ import {
   container_detail_header,
 } from "./Detail.module.css";
 import back_btn from "../../assets/img/back_btn.png";
+import unknown_country from "../../assets/img/country-no-existent.png";
 
 export function Detail() {
   const navigate = useNavigate();
@@ -27,7 +28,15 @@ export function Detail() {
           </h1>
         </div>
         {error.state ? (
-          <InfoSign message={error.msg} />
+          error.msg.startsWith(`[${param}]`) ? (
+            <InfoSign
+              title="nonexistent country"
+              img={unknown_country}
+              message={`It seems that the country "${param}" does not exist.`}
+            />
+          ) : (
+            <InfoSign message={error.msg} />
+          )
         ) : loading ? (
           <Loader />
         ) : (
