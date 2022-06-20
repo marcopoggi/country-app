@@ -22,8 +22,7 @@
 .container_pagination button {
   font-size: 1em;
   cursor: pointer;
-  background: var(--searcher-background-first);
-  background: linear-gradient(90deg, var(--searcher-background-first) 70%, var(--searcher-background-second) 100%);
+  background: #111;
   color: #FFF;
   border: none;
   border-radius: 6px;
