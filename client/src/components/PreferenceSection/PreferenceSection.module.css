@@ -63,7 +63,6 @@
 .preference_section_inputs {
   padding: 6px;
   width: 100%;
-  /* background-color: red; */
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -79,4 +78,46 @@
   width: 100%;
   text-transform: capitalize;
   font-weight: normal;
+}
+
+.section_no_data {
+  padding: 10px;
+  min-height: 200px;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.section_no_data>h3 {
+  font-size: 1.3em;
+  width: 100%;
+  text-align: center;
+}
+
+.section_no_data>button {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 64px;
+  height: 64px;
+  font-size: 1em;
+  padding: 10px 5px;
+  font-weight: bold;
+  background-color: var(--third-color);
+  color: #FFF;
+  border: none;
+  border-radius: 50%;
+}
+
+.section_no_data>button>img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  max-height: 32px;
 }
