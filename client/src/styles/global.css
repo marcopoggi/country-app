@@ -41,6 +41,48 @@ body {
   background-size: cover;
 }
 
-input:focus{
+input:focus {
   outline: none;
+}
+
+/* checkbox / radiobtn */
+input[type="checkbox"]+label:before,
+input[type="radio"]+label:before {
+  cursor: pointer;
+  content: "";
+  width: 26px;
+  height: 26px;
+  float: left;
+  border: 2px solid rgb(109, 109, 109);
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+input[type="checkbox"]:checked+label,
+input[type="radio"]:checked+label {
+  color: var(--second-color);
+  text-shadow: 0 0 5px rgb(0, 0, 0);
+}
+
+input[type="checkbox"]:checked+label:before,
+input[type="radio"]:checked+label:before {
+  border-color: var(--second-color);
+  box-shadow: 0 0 5px var(--third-color);
+}
+
+input[type="checkbox"]:checked+label:after,
+input[type="radio"]:checked+label:after {
+  cursor: pointer;
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  margin-left: 7px;
+  border-radius: 1px;
+  background-color: var(--second-color);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: none;
 }
