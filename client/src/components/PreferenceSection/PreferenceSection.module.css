@@ -2,7 +2,6 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  /* background-color: green; */
   gap: 3px;
   width: 100%;
 }
