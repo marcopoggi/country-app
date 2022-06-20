@@ -6,7 +6,7 @@
   --second-color: #43CB8E;
   --third-color: #077e48;
   --first-color-trans: #23a6fee8;
-  --second-color-trans: #43cb8ee0;
+  --second-color-trans: #43cb8ed3;
   --second-color-op: #252525b7;
   --second-color-op-more: #0f0f0fe0;
   --searcher-background-first: rgba(15, 15, 15, 0.9);
@@ -29,6 +29,7 @@
 html,
 body {
   height: 100%;
+  scrollbar-color: #FFF transparent;
 }
 
 .App {
