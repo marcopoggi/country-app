@@ -20,10 +20,11 @@
 .open_prefs {
   display: flex;
   position: absolute;
+  z-index: 100;
   width: 100%;
   min-height: 100vh;
   background: var(--first-color-trans);
-  background: linear-gradient(90deg, #242424 5%, var(--second-color)100%);
+  background: linear-gradient(90deg, #111 5%, rgb(11, 19, 26) 100%);
 }
 
 .close_prefs {
@@ -39,7 +40,6 @@
     width: 35%;
     height: 100%;
     overflow-y: scroll;
-    scrollbar-color: #FFF var(--second-color);
   }
 }
 
