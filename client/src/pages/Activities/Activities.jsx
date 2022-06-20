@@ -25,7 +25,7 @@ export function Activities() {
           <h1>Create activity</h1>
         </div>
         {error.state ? (
-          <InfoSign />
+          <InfoSign message="Impossible to create activities at this time"/>
         ) : loading ? (
           <Loader />
         ) : (
