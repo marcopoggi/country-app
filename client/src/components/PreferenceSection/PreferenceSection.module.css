@@ -70,43 +70,6 @@
   justify-content: center;
 }
 
-/* checkbox / radiobtn */
-.input_check_radio+label:before {
-  cursor: pointer;
-  content: "";
-  width: 26px;
-  height: 26px;
-  float: left;
-  border: 2px solid rgb(109, 109, 109);
-  border-radius: 3px;
-  background-color: #fff;
-}
-
-.input_check_radio:checked+label {
-  color: var(--second-color);
-  text-shadow: 0 0 5px rgb(0, 0, 0);
-}
-
-.input_check_radio:checked+label:before {
-  border-color: var(--second-color);
-  box-shadow: 0 0 5px var(--third-color);
-}
-
-.input_check_radio:checked+label:after {
-  cursor: pointer;
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  margin-left: 7px;
-  border-radius: 1px;
-  background-color: var(--second-color);
-}
-
-.input_check_radio {
-  display: none;
-}
-
 .preference_section_inputs>label {
   display: flex;
   justify-content: flex-start;

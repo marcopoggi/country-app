@@ -2,7 +2,6 @@
 import {
   preference_section_container,
   preference_section_inputs,
-  input_check_radio,
   preference_header,
   descendent_btn,
   descendent_btn_true,
@@ -55,7 +54,6 @@ export function PreferenceSection({
                 id={val}
                 onClick={handler}
                 defaultChecked
-                className={input_check_radio}
               />
             ) : (
               <input
@@ -64,7 +62,6 @@ export function PreferenceSection({
                 value={val}
                 id={val}
                 onClick={handler}
-                className={input_check_radio}
               />
             )
           }
