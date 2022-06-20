@@ -22,7 +22,7 @@ import {
   form_success,
   form_countries_show,
   form_countries_hidden,
-  input_check_radio,
+  country_option,
   form_field,
 } from "./CreateActivity.module.css";
 import location_icon from "../../assets/img/location_countries.png";
@@ -161,9 +161,8 @@ export function CreateActivity({ countries }) {
         className={showCountries ? form_countries_show : form_countries_hidden}
       >
         {countries.map(({ name }) => (
-          <div key={name}>
+          <div key={name} className={country_option}>
             <input
-              className={input_check_radio}
               type="checkbox"
               name="selectedCountries"
               id={name}
