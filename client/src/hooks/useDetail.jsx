@@ -27,5 +27,5 @@ export function useDetail() {
     [idOrName, details, dispatch]
   );
 
-  return { countryDetail, error, loading };
+  return { countryDetail, error, loading, param: idOrName };
 }
