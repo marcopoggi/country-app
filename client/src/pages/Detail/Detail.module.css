@@ -16,7 +16,7 @@
 
 .container_detail_header {
   background-color: rgba(34, 34, 34, 0.5);
-  padding: 6px 12px;
+  padding: 0 12px;
   min-height: 10vh;
   display: flex;
   flex-flow: row nowrap;
