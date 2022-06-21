@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { InfoSign } from "../InfoSign/InfoSign";
+import { useDispatch } from "react-redux";
+//actions
+import { setCountries } from "../../redux/actions/countries";
 //handlers
 import {
   nameValidator,
@@ -29,6 +32,7 @@ import location_icon from "../../assets/img/location_countries.png";
 import ok_icon from "../../assets/img/ok_icon.png";
 
 export function CreateActivity({ countries }) {
+  const disptach = useDispatch();
   const [success, setSuccess] = useState({ state: false, msg: "" });
   const [showCountries, setShowCountries] = useState(false);
   const [valid, setValid] = useState(false);
@@ -91,6 +95,7 @@ export function CreateActivity({ countries }) {
             ? message
             : "Activity exists, updated countries",
         });
+        if (created) disptach(setCountries());
       });
       setForm(INITIAL_FORM);
       setErrors(INITIAL_FORM_ERRORS);
