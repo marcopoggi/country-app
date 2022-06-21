@@ -1,30 +1,26 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { setDetail } from "../redux/actions/details";
+import { getCountryDetail } from "../services/countries";
 
 export function useDetail() {
-  const dispatch = useDispatch();
   const { idOrName } = useParams();
-  const { details, error } = useSelector((state) => state.details);
   const [loading, setLoading] = useState(false);
   const [countryDetail, setCountryDetail] = useState({});
+  const [error, setError] = useState({ state: false, msg: "" });
 
   useEffect(
     function () {
       setLoading(true);
-      let searchParam = idOrName.toLowerCase();
-      let searchLocalDetail = details.find(
-        ({ id, name }) => name === searchParam || id === searchParam
-      );
-      if (!searchLocalDetail) {
-        dispatch(setDetail(idOrName));
-      } else {
-        setCountryDetail(searchLocalDetail);
-        setLoading(false);
-      }
+      getCountryDetail(idOrName)
+        .then(({ response }) => {
+          response?.error
+            ? setError({ state: true, msg: response.error })
+            : setCountryDetail(response);
+          setLoading(false);
+        })
+        .catch(() => setLoading(false));
     },
-    [idOrName, details, dispatch]
+    [idOrName]
   );
 
   return { countryDetail, error, loading, param: idOrName };
