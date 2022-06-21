@@ -95,7 +95,7 @@ export function CreateActivity({ countries }) {
             ? message
             : "Activity exists, updated countries",
         });
-        if (created) disptach(setCountries());
+        disptach(setCountries());
       });
       setForm(INITIAL_FORM);
       setErrors(INITIAL_FORM_ERRORS);
