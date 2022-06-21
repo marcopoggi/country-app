@@ -8,7 +8,7 @@ import {
   getOrderedCountries,
 } from "../handlers/countries";
 
-export function useCountries(all = false) {
+export function useCountries(all = false, refresh = false) {
   const [loading, setLoading] = useState(false);
   const { countries, countriesToView, error, filters, order } = useSelector(
     (state) => state.countries
@@ -18,7 +18,7 @@ export function useCountries(all = false) {
   useEffect(
     function () {
       setLoading(true);
-      if (countries.length === 0) {
+      if (countries.length === 0 || refresh) {
         dispatch(setCountries());
       } else setLoading(false);
       if (!all) {
@@ -27,7 +27,7 @@ export function useCountries(all = false) {
         dispatch(setCountriesToView(ordered));
       }
     },
-    [countries.length, dispatch, countries, filters, order, all]
+    [countries.length, dispatch, countries, filters, order, all, refresh]
   );
 
   return {
