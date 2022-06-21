@@ -4,7 +4,7 @@ import { useCountries } from "./useCountries";
 
 export function useActivities() {
   const [activities, setActivities] = useState(new Set());
-  const { countries } = useCountries(true, true); //all
+  const { countries } = useCountries(true); //all
 
   useEffect(
     function () {
