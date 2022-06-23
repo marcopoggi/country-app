@@ -1,0 +1,27 @@
+.container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(17, 17, 17, 0.9);
+}
+
+.btn_link {
+  cursor: pointer;
+  background-color: rgba(66, 66, 66, 0.582);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  text-decoration: none;
+  border-radius: 6px;
+  padding: 9px;
+}
+
+.btn_link>img {
+  width: 64px;
+  height: 64px;
+}
