@@ -1,13 +1,14 @@
 {
-  "name": "api",
+  "name": "country-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -L",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "mocha -w ./tests/**/*.spec.js"
   },
-  "author": "Henry",
+  "author": "Marco Poggi",
   "license": "ISC",
   "engines": {
     "node": ">=12.18.3",
