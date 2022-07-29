@@ -4,6 +4,7 @@ const ALLOWED_ORIGINS =
   MODE !== "dev"
     ? [
         /https:\/\/pi-countries-marco.vercel.app/,
+        /https:\/\/pi-countries-marcopoggi.vercel.app/,
         /https:\/\/pi-countries-.*-marcopoggi.vercel.app/,
       ]
     : [/http:\/\/localhost:([0-9]{4})/];
